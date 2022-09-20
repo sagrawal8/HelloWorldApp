@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">NUMAD22Fa_ShashankAgrawal</string>
     <string name="about_me">About me</string>
+    <string name="button_clicky_clacky">Clicky Clacky</string>
+    <string name="clicky_clacky_button_1">A</string>
+    <string name="clicky_clacky_button_2">B</string>
+    <string name="clicky_clacky_button_3">C</string>
+    <string name="clicky_clacky_button_4">D</string>
+    <string name="clicky_clacky_button_5">E</string>
+    <string name="clicky_clacky_button_6">F</string>
+    <string name="pressed_default">Pressed:</string>
+    <string name="pressed_other">Pressed: %1$s</string>
 </resources>

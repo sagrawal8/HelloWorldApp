@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClickyClackyActivity">
+
+    <Button
+        android:id="@+id/buttonD"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonA" />
+
+    <Button
+        android:id="@+id/buttonE"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="43dp"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_5"
+        app:layout_constraintBottom_toTopOf="@+id/textPressed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonB" />
+
+    <Button
+        android:id="@+id/buttonF"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="43dp"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_6"
+        app:layout_constraintBottom_toTopOf="@+id/textPressed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonC" />
+
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginBottom="17dp"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonC"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginBottom="17dp"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonA"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="80dp"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_1"
+        app:layout_constraintBottom_toTopOf="@+id/buttonD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textPressed"
+        android:layout_width="226dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="393dp"
+        android:text="@string/pressed_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonD" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
