@@ -7,96 +7,86 @@
     tools:context=".ClickyClackyActivity">
 
     <Button
+        android:id="@+id/buttonA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="pressedButton"
+        android:text="@string/clicky_clacky_button_1"
+        app:layout_constraintBottom_toTopOf="@+id/buttonD"
+        app:layout_constraintEnd_toStartOf="@+id/buttonB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.521" />
+
+    <Button
         android:id="@+id/buttonD"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
         android:onClick="pressedButton"
         android:text="@string/clicky_clacky_button_4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintBottom_toTopOf="@+id/textPressed"
+        app:layout_constraintEnd_toStartOf="@+id/buttonE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonA" />
 
     <Button
         android:id="@+id/buttonE"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
         android:onClick="pressedButton"
         android:text="@string/clicky_clacky_button_5"
         app:layout_constraintBottom_toTopOf="@+id/textPressed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonF"
+        app:layout_constraintStart_toEndOf="@+id/buttonD"
         app:layout_constraintTop_toBottomOf="@+id/buttonB" />
 
     <Button
         android:id="@+id/buttonF"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
         android:onClick="pressedButton"
         android:text="@string/clicky_clacky_button_6"
         app:layout_constraintBottom_toTopOf="@+id/textPressed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonE"
         app:layout_constraintTop_toBottomOf="@+id/buttonC" />
 
     <Button
         android:id="@+id/buttonB"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="126dp"
-        android:layout_marginBottom="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="pressedButton"
         android:text="@string/clicky_clacky_button_2"
         app:layout_constraintBottom_toTopOf="@+id/buttonE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonC"
+        app:layout_constraintStart_toEndOf="@+id/buttonA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.521" />
 
     <Button
         android:id="@+id/buttonC"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="126dp"
-        android:layout_marginBottom="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="pressedButton"
         android:text="@string/clicky_clacky_button_3"
         app:layout_constraintBottom_toTopOf="@+id/buttonF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonA"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="80dp"
-        android:onClick="pressedButton"
-        android:text="@string/clicky_clacky_button_1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/buttonB"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.521" />
 
     <TextView
         android:id="@+id/textPressed"
-        android:layout_width="226dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="393dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/pressed_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonD" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonE" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
