@@ -5,17 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LinkCollectorActivity">
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/url_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_url_fab"
@@ -31,10 +28,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ImageContrastCheck" />
 
-    <FrameLayout
-        android:id="@+id/add_url_frame_layout"
-        android:layout_width="114dp"
-        android:layout_height="300dp"
+    <LinearLayout
+        android:id="@+id/add_url_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,29 +42,22 @@
         <EditText
             android:id="@+id/plain_text_input_name"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:hint="@string/edit_text_name"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:minHeight="48dp"
-            android:textColorHint="#757575"
-            app:layout_constraintBottom_toTopOf="@+id/plain_text_input_link"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColorHint="#757575" />
 
         <EditText
             android:id="@+id/plain_text_input_link"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/http"
             android:hint="@string/edit_text_link"
             android:importantForAutofill="no"
-            android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plain_text_input_name" />
+            android:inputType="text" />
+    </LinearLayout>
 
-    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

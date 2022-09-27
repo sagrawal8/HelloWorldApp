@@ -6,14 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -21,7 +20,9 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
     RecyclerView urlRecyclerView;
     ArrayList<Url> urlList;
+    //check if button has been clicked
     boolean flag_button_click = false;
+    //check if dataset changed
     boolean flag_dataset_changed = false;
 
     @Override
@@ -30,38 +31,60 @@ public class LinkCollectorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_link_collector);
 
         urlList = new ArrayList<>();
-        urlList.add(new Url("Google", "https://google.com"));
-        urlList.add(new Url("Yahoo", "https://yahoo.com"));
-        urlRecyclerView = findViewById(R.id.url_recycler_view);
-        urlRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        urlRecyclerView.setAdapter(new UrlAdapter(urlList, this));
 
+        //View
+        urlRecyclerView = findViewById(R.id.url_recycler_view);
+        //Layout manager
+        urlRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //Adapter
+        urlRecyclerView.setAdapter(new UrlAdapter(urlList, this));
+        //FAB
         FloatingActionButton fab = findViewById(R.id.add_url_fab);
+        //Listener
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FrameLayout f = findViewById(R.id.add_url_frame_layout);
+                //Linear layout
+                LinearLayout linearLayout = findViewById(R.id.add_url_linear_layout);
+                //If button has been clilcked ie. URL is being added
                 if(!flag_button_click){
+                    //Set visibility of recycler view to GONE
+                    findViewById(R.id.url_recycler_view).setVisibility(View.GONE);
+                    //Change FAB icon
                     fab.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_check_circle_24));
+                    //Set button clicked to true
                     flag_button_click = true;
-                    f.setVisibility(View.VISIBLE);
-                    String name = ((EditText)findViewById(R.id.plain_text_input_name)).getText().toString();
-                    String link = ((EditText)findViewById(R.id.plain_text_input_link)).getText().toString();
-                    if(!name.matches("") && !link.matches("")) {
-                        urlList.add(new Url("Amazon", link));
-                        flag_dataset_changed = true;
-                    }
+                    //Show adding URL page
+                    linearLayout.setVisibility(View.VISIBLE);
+                //After URL is added
                 }else if(flag_button_click){
+                    //Display recycler list
+                    findViewById(R.id.url_recycler_view).setVisibility(View.VISIBLE);
+                    //Change FAB icon
                     fab.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_add_circle_24));
+                    //Set button clicked to false
                     flag_button_click = false;
-                    f.setVisibility(View.INVISIBLE);
+                    //Set visibility of add page to invisible
+                    linearLayout.setVisibility(View.GONE);
+                    //Get name
+                    String name = ((EditText)findViewById(R.id.plain_text_input_name)).getText().toString();
+                    //Get link
+                    String link = ((EditText)findViewById(R.id.plain_text_input_link)).getText().toString();
+                    //Check if not empty and add
                     String message;
-                    if(flag_dataset_changed) {
+                    if(!name.matches("") && !link.matches("")) {
+                        urlList.add(new Url(name, link));
+                        flag_dataset_changed = true;
                         Objects.requireNonNull(urlRecyclerView.getAdapter()).notifyItemInserted(urlList.size() - 1);
                         message = "URL added.";
+                        //Clear edit text fields
+                        ((EditText)findViewById(R.id.plain_text_input_name)).getText().clear();
+                        ((EditText)findViewById(R.id.plain_text_input_link)).getText().clear();
+                        flag_dataset_changed = false;
                     } else {
-                        message = "1 or more fields were empty or null.";
+                        message = "1 or more fields were empty.";
                     }
+                    //Show snackbar
                     Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
                 }

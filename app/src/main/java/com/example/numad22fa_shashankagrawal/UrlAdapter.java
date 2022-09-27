@@ -1,6 +1,8 @@
 package com.example.numad22fa_shashankagrawal;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -39,7 +41,12 @@ public class UrlAdapter extends RecyclerView.Adapter<UrlViewHolder>{
 
         // set a click event on the whole itemView (every element of the recyclerview).
         holder.itemView.setOnClickListener(view -> {
-            Toast.makeText(context, urls.get(position).getName(), Toast.LENGTH_SHORT).show();
+            String url = urls.get(position).getLink();
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                url = "http://" + url;
+            }
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            context.startActivity(browserIntent);
         });
     }
 
