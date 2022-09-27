@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.256" />
+        <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.2625" />
+        <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/layout/activity_about_me.xml" value="0.3625" />
         <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/layout/activity_clicky_clacky.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/layout/activity_link_collector.xml" value="0.26992753623188404" />
         <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/layout/item_url.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/Dfalt/AndroidStudioProjects/NUMAD22Fa_ShashankAgrawal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3625" />
       </map>
     </option>

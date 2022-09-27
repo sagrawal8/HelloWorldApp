@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:onClick="aboutMe"
         android:text="@string/about_me"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/link_collector_button"
         app:layout_constraintEnd_toStartOf="@+id/button_clicky_clacky"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -38,9 +38,20 @@
         android:layout_height="wrap_content"
         android:onClick="clickyClacky"
         android:text="@string/button_clicky_clacky"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/link_collector_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_about_me"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/link_collector_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="linkCollector"
+        android:text="@string/link_collector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_about_me" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

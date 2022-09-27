@@ -1,11 +1,9 @@
 package com.example.numad22fa_shashankagrawal;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,14 +15,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void aboutMe(View view) {
-        Context context = getApplicationContext();
         CharSequence text = "Name: Shashank Agrawal\nEmail: agrawal.sha@northeastern.edu";
-        int duration = Toast.LENGTH_LONG;
-        Toast.makeText(context, text, duration).show();
+        Intent intent = new Intent(this, AboutMeActivity.class);
+        intent.putExtra("ABOUT_ME", text);
+        startActivity(intent);
     }
 
     public void clickyClacky(View view){
         Intent intent = new Intent(this, ClickyClackyActivity.class);
+        startActivity(intent);
+    }
+
+    public void linkCollector(View view){
+        Intent intent = new Intent(this, LinkCollectorActivity.class);
         startActivity(intent);
     }
 

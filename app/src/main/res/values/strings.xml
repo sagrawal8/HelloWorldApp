@@ -10,4 +10,8 @@
     <string name="clicky_clacky_button_6">F</string>
     <string name="pressed_default">Pressed:</string>
     <string name="pressed_other">Pressed: %1$s</string>
+    <string name="link_collector">Link Collector</string>
+    <string name="add_to_url_list">Add to List</string>
+    <string name="edit_text_name">Name of url</string>
+    <string name="edit_text_link">Link of url</string>
 </resources>
