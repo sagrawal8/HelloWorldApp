@@ -14,4 +14,5 @@
     <string name="add_to_url_list">Add to List</string>
     <string name="edit_text_name">Name of url</string>
     <string name="edit_text_link">Link of url</string>
+    <string name="http">http://</string>
 </resources>
