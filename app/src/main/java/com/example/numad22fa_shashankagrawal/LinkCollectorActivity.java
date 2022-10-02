@@ -2,6 +2,7 @@ package com.example.numad22fa_shashankagrawal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
@@ -38,6 +39,10 @@ public class LinkCollectorActivity extends AppCompatActivity {
         urlRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //Adapter
         urlRecyclerView.setAdapter(new UrlAdapter(urlList, this));
+        //Item Touch Helper
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new SwipeToDeleteCallback((UrlAdapter) urlRecyclerView.getAdapter()));
+        itemTouchHelper.attachToRecyclerView(urlRecyclerView);
         //FAB
         FloatingActionButton fab = findViewById(R.id.add_url_fab);
         //Listener
@@ -46,7 +51,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Linear layout
                 LinearLayout linearLayout = findViewById(R.id.add_url_linear_layout);
-                //If button has been clilcked ie. URL is being added
+                //If button has been clicked ie. URL is being added
                 if(!flag_button_click){
                     //Set visibility of recycler view to GONE
                     findViewById(R.id.url_recycler_view).setVisibility(View.GONE);

@@ -1,18 +1,23 @@
 package com.example.numad22fa_shashankagrawal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 public class UrlAdapter extends RecyclerView.Adapter<UrlViewHolder>{
     private final List<Url> urls;
     private final Context context;
+    private Url recentlyDeletedUrl;
+    private int recentlyDeletedUrlPosition;
 
     /**
      * Creates a PersonAdapter with the provided arraylist of Person objects.
@@ -54,5 +59,27 @@ public class UrlAdapter extends RecyclerView.Adapter<UrlViewHolder>{
     public int getItemCount() {
         // Returns the size of the recyclerview that is the list of the arraylist.
         return urls.size();
+    }
+
+    public void deleteItem(int position){
+        recentlyDeletedUrl = urls.get(position);
+        recentlyDeletedUrlPosition = position;
+        urls.remove(position);
+        notifyItemRemoved(position);
+        showUndoSnackbar();
+    }
+
+    private void showUndoSnackbar() {
+        RecyclerView recyclerView = (RecyclerView) ((Activity) context).findViewById(R.id.url_recycler_view);
+        Snackbar snackbar = Snackbar.make(recyclerView, "Swipe to undo delete",
+                Snackbar.LENGTH_LONG);
+        snackbar.setAction("Undo", v -> undoDelete());
+        snackbar.show();
+    }
+
+    private void undoDelete() {
+        urls.add(recentlyDeletedUrlPosition,
+                recentlyDeletedUrl);
+        notifyItemInserted(recentlyDeletedUrlPosition);
     }
 }
