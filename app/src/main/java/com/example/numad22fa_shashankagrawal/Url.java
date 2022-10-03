@@ -1,6 +1,9 @@
 package com.example.numad22fa_shashankagrawal;
 
-public class Url {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Url implements Parcelable {
     private final String name;
 
     private final String link;
@@ -16,11 +19,39 @@ public class Url {
         this.link = link;
     }
 
+    protected Url(Parcel in) {
+        name = in.readString();
+        link = in.readString();
+    }
+
+    public static final Creator<Url> CREATOR = new Parcelable.Creator<Url>() {
+        @Override
+        public Url createFromParcel(Parcel in) {
+            return new Url(in);
+        }
+
+        @Override
+        public Url[] newArray(int size) {
+            return new Url[size];
+        }
+    };
+
     public String getName() {
         return name;
     }
 
     public String getLink() {
         return link;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(link);
     }
 }

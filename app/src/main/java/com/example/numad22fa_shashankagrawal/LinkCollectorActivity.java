@@ -30,8 +30,11 @@ public class LinkCollectorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_collector);
-
-        urlList = new ArrayList<>();
+        if(savedInstanceState == null) {
+            urlList = new ArrayList<>();
+        } else {
+            urlList = savedInstanceState.getParcelableArrayList("urlList");
+        }
 
         //View
         urlRecyclerView = findViewById(R.id.url_recycler_view);
@@ -84,7 +87,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
                         message = "URL added.";
                         //Clear edit text fields
                         ((EditText)findViewById(R.id.plain_text_input_name)).getText().clear();
-                        ((EditText)findViewById(R.id.plain_text_input_link)).getText().clear();
+                        ((EditText)findViewById(R.id.plain_text_input_link)).setText("http://");
                         flag_dataset_changed = false;
                     } else {
                         message = "1 or more fields were empty.";
@@ -95,5 +98,11 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        outState.putParcelableArrayList("urlList", urlList);
+        super.onSaveInstanceState (outState);
     }
 }
