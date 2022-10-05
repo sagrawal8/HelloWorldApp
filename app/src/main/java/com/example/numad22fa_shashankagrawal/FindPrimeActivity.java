@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 public class FindPrimeActivity extends AppCompatActivity {
     private Handler mHandler;
     private Thread x = null;
@@ -55,6 +57,7 @@ public class FindPrimeActivity extends AppCompatActivity {
             private long currentNum = FindPrimeActivity.this.currentNum;
             private final TextView latestPrimeTextView = findViewById(R.id.latest_prime);
             private final TextView currentNumberTextView = findViewById(R.id.current_number);
+            long timePosted = new Date().getTime();
             @Override
             public void run() {
                 int i;
@@ -71,7 +74,10 @@ public class FindPrimeActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 latestPrimeTextView.setText(String.valueOf(latestPrime));
-                                currentNumberTextView.setText(String.valueOf(currentNum));
+                                if(new Date().getTime() - timePosted >= 200){
+                                    currentNumberTextView.setText(String.valueOf(currentNum));
+                                    timePosted = new Date().getTime();
+                                }
                             }
                         });
 
@@ -88,7 +94,7 @@ public class FindPrimeActivity extends AppCompatActivity {
         if(x != null) {
             x.interrupt();
             x = null;
-            //Thread.currentThread().sleep(1000);
+            ((TextView)findViewById(R.id.current_number)).setText(String.valueOf(currentNum));
             terminatedSearch = true;
         }
 
