@@ -34,6 +34,10 @@ public class FindPrimeActivity extends AppCompatActivity {
                 currentNum = savedInstanceState.getLong("current_num_for_search");
             }
             restoredFromBundle = true;
+            if(savedInstanceState.getBoolean("search_running"))
+            {
+                runThread();
+            }
         } else {
             currentNum = 3;
             latestPrime = 3;
@@ -43,7 +47,7 @@ public class FindPrimeActivity extends AppCompatActivity {
         terminatedSearch = false;
     }
 
-    public void startPrimeSearch(View view){
+    public void runThread() {
         if(x!=null){
             return;
         }
@@ -90,6 +94,10 @@ public class FindPrimeActivity extends AppCompatActivity {
         x.start();
     }
 
+    public void startPrimeSearch(View view){
+        runThread();
+    }
+
     public void endPrimeSearch(View view) {
         if(x != null) {
             x.interrupt();
@@ -123,6 +131,7 @@ public class FindPrimeActivity extends AppCompatActivity {
         super.onSaveInstanceState(bundle);
         bundle.putLong("latest_prime", latestPrime);
         bundle.putLong("current_num", currentNum);
+        bundle.putBoolean("search_running", x != null);
         if(terminatedSearch){
             bundle.putLong("latest_prime_for_search", 3);
             bundle.putLong("current_num_for_search", 3);
