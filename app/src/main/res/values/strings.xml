@@ -14,5 +14,11 @@
     <string name="add_to_url_list">Add to List</string>
     <string name="edit_text_name">Name of url</string>
     <string name="edit_text_link">Link of url</string>
+    <string name="find_prime_button">Find Primes</string>
     <string name="http">http://</string>
+    <string name="start_prime_search_button">Find Primes</string>
+    <string name="terminate_search_button">Terminate Search</string>
+    <string name="latest_prime_textView">Latest Prime</string>
+    <string name="current_number_textView">Current Number</string>
+    <string name="pacifier_checkbox_text">Check if main thread is busy</string>
 </resources>

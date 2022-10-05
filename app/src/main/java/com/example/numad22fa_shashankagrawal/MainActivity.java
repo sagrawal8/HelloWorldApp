@@ -31,4 +31,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void findPrime(View view){
+        Intent intent = new Intent(this, FindPrimeActivity.class);
+        startActivity(intent);
+    }
 }
