@@ -1,5 +1,6 @@
 package com.example.numad22fa_shashankagrawal;
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -53,12 +54,18 @@ public class LocationActivity extends AppCompatActivity {
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(LocationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            ActivityCompat.requestPermissions(LocationActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+            ActivityCompat.requestPermissions(LocationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
         } else {
+            instantiateLocation();
+        }
+    }
+
+    public void instantiateLocation () {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //Instantiating the Location request and setting the priority and the interval I need to update the location.
             locationRequest = locationRequest.create();
-            locationRequest.setInterval(100);
+            locationRequest.setInterval(50);
             locationRequest.setFastestInterval(50);
             locationRequest.setPriority(Priority.PRIORITY_HIGH_ACCURACY);
 
@@ -72,12 +79,12 @@ public class LocationActivity extends AppCompatActivity {
                         }
                         //Showing the latitude, longitude and accuracy on the home screen.
                         for (Location location : locationResult.getLocations()) {
-                            if(latitude != -91 && longitude != -181){
+                            if (latitude != -91 && longitude != -181) {
                                 distance += getDistance(latitude, location.getLatitude(), longitude, location.getLongitude());
                             }
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
-                            distanceTextView.setText("Distance: " + String.format("%.2f",distance) +"m");
+                            distanceTextView.setText("Distance: " + String.format("%.2f", distance) + "m");
                             locationTextView.setText(MessageFormat.format("Lat: {0}\nLong: {1}", location.getLatitude(),
                                     location.getLongitude()));
                         }
@@ -90,9 +97,27 @@ public class LocationActivity extends AppCompatActivity {
 
     public void resetDistance(View view) {
         distance = 0;
-        distanceTextView.setText("0.0m");
+        distanceTextView.setText("Distance: " + String.format("%.2f", distance) + "m");
         latitude = -91;
         longitude = -181;
+    }
+
+    @Override
+    public void
+    onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 44) {
+            if (grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                instantiateLocation();
+            } else {
+                new AlertDialog.Builder(this)
+                        .setTitle("Permissions Required")
+                        .setMessage("Location permissions are required to continue using this feature.")
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton("Continue", null)
+                        .show();
+            }
+        }
     }
     
     public double getDistance(double lat1, double lat2, double lon1, double lon2) {
